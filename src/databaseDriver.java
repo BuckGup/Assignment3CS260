@@ -39,8 +39,9 @@ public class databaseDriver {
             //SET ExampleColumn = 'ExampleValue'
             //WHERE _____
         } else if (action.equals("DELETE")) {
-            //
-            //
+            //DELETE __row__
+            //FROM ExampleTable
+            //WHERE ______
         }
 
 
