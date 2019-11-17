@@ -8,8 +8,23 @@ public class databaseDriver {
 
 
 
+        Scanner userInput = new Scanner(System.in);
+        String action;
+        String tableLoc;
 
-//UR MUM very nice person
+        System.out.println("What action do you want to take? (INSERT, UPDATE, or DELETE)");     //assumes the user inputs one of these values
+        action = userInput.nextLine();
+
+        System.out.println("What table do you want to " + action + "?");
+        tableLoc = userInput.nextLine();
+
+        if (action.equals("INSERT")) {
+
+        } else if (action.equals("UPDATE")) {
+
+        } else if (action.equals("DELETE")) {
+
+        }
 
 
 
