@@ -6,6 +6,7 @@ public class Delete {
      * Also, we don't need to worry about changing types.
      */
 
+    //As a transaction
     public void callSQLDelete() {
         //DELETE __row__
         //FROM ExampleTable

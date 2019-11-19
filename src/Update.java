@@ -6,6 +6,7 @@ public class Update {
      * Something about not having to worry about changing types.
      */
 
+    //As a transaction
     public void callSQLUpdate() {
         //UPDATE ExampleTable
         //SET ExampleColumn = 'ExampleValue'

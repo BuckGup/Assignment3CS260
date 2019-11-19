@@ -2,10 +2,8 @@ import java.io.*;
 import java.util.Scanner;
 import java.sql.*;
 
-
-//TODO add comments to all of our work before we turn it in
-
 public class databaseDriver {
+//TODO add comments to all of our work before we turn it in
 
     private Connection conn = null;            // JDBC connection
     private ResultSet rset = null;            // result set for queries
@@ -14,63 +12,74 @@ public class databaseDriver {
     // --- connect() - connect to the Oracle database
 
     public static void main(String args[]) {
-
         Scanner userInput = new Scanner(System.in);
         String action;
         String tableLoc;
         String rowName;
 
-        System.out.println("What action do you want to take? (INSERT, UPDATE, or DELETE)");     //assumes the user inputs one of these values
-        action = userInput.nextLine().toUpperCase();
+        while (true) {
 
-        System.out.println("In which table do you want to " + action + "?");
-        tableLoc = userInput.nextLine().toUpperCase();
+            System.out.println("What action do you want to take? (INSERT, UPDATE, or DELETE)" +
+                    "\nor type \"EXIT\" to exit the program");     //assumes the user inputs one of these values
+
+            action = userInput.nextLine().toUpperCase();
+
+            if (action.equalsIgnoreCase("EXIT")) {
+                return;
+            }
+
+            System.out.println("In which table do you want to " + action + "?");
+            tableLoc = userInput.nextLine().toUpperCase();
 
 
-        //Prompt user with list of all the rows in tableLoc
-        //TODO: Do we need to have HRID visible to the user?
-        String tableRowList = "\n--------------------";
-        if (tableLoc.equals("MEDICAL CENTER")) {
-            tableRowList += "\nHRID";
-            tableRowList += "\nNumBeds";
-            tableRowList += "\nEmergencyRoomCapacity";
-            tableRowList += "\nNumDoctors";
-            tableRowList += "\nNumNurses";
-        } else if (tableLoc.equals("FOOD")) {
-            tableRowList += "\nHRID";
-            tableRowList += "\nFType";
-            tableRowList += "\nFMealsAvailable";
-            tableRowList += "\nFSpecificDesc";
-        } else if (tableLoc.equals("WATER")) {
-            tableRowList += "\nHRID";
-            tableRowList += "\nNum10OzBottlesAvailable";
-            tableRowList += "\nNumHalfLiterBottlesAvailable";
-            tableRowList += "\nNum5GallonJugsAvailable";
+            //Prompt user with list of all the rows in tableLoc
+            //TODO: Do we need to have HRID visible to the user?
+            String tableRowList = "\n--------------------";
+            if (tableLoc.equals("MEDICAL CENTER")) {
+                tableRowList += "\nHRID";
+                tableRowList += "\nNumBeds";
+                tableRowList += "\nEmergencyRoomCapacity";
+                tableRowList += "\nNumDoctors";
+                tableRowList += "\nNumNurses";
+            } else if (tableLoc.equals("FOOD")) {
+                tableRowList += "\nHRID";
+                tableRowList += "\nFType";
+                tableRowList += "\nFMealsAvailable";
+                tableRowList += "\nFSpecificDesc";
+            } else if (tableLoc.equals("WATER")) {
+                tableRowList += "\nHRID";
+                tableRowList += "\nNum10OzBottlesAvailable";
+                tableRowList += "\nNumHalfLiterBottlesAvailable";
+                tableRowList += "\nNum5GallonJugsAvailable";
+            }
+            tableRowList += "\n--------------------";
+            System.out.println("Here are the rows in " + tableLoc + ":" + tableRowList);
+
+
+            System.out.println("What row would you like to " + action + "?");
+            rowName = userInput.nextLine();
+
+
+            //TODO: This is where we generate different SQL statements based on the userInput gathered above
+            if (action.equals("INSERT")) {
+                Insert InsertStatement = new Insert();
+                InsertStatement.callSQLInsert();
+            } else if (action.equals("UPDATE")) {
+                Update UpdateStatement = new Update();
+                UpdateStatement.callSQLUpdate();
+            } else if (action.equals("DELETE")) {
+                Delete DeleteStatement = new Delete();
+                DeleteStatement.callSQLDelete();
+            }
+
+            //--------------------------------------------------------------------------------------------------------------
+
+
         }
-        tableRowList += "\n--------------------";
-        System.out.println("Here are the rows in " + tableLoc + ":" + tableRowList);
 
 
 
-        System.out.println("What row would you like to " + action + "?");
-        rowName = userInput.nextLine();
-
-
-        //TODO: This is where we generate different SQL statements based on the userInput gathered above
-        if (action.equals("INSERT")) {
-            Insert InsertStatement = new Insert();
-            InsertStatement.callSQLInsert();
-        } else if (action.equals("UPDATE")) {
-            Update UpdateStatement = new Update();
-            UpdateStatement.callSQLUpdate();
-        } else if (action.equals("DELETE")) {
-            Delete DeleteStatement = new Delete();
-            DeleteStatement.callSQLDelete();
-        }
     }
-
-
-
 
 
 
