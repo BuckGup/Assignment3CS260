@@ -1,3 +1,15 @@
 public class Insert {
+    /**
+     * When inserting, we need to use the HRID to insert into both the specified table (F, W, MC) AND the Human Resources
+     * table. All three (F, W, MC) tables are subclasses of Human Resources, so the value will need to be inserted
+     * into a total of 2 tables.
+     * Also, we don't need to worry about changing types.
+     */
 
+    public void callSQLInsert() {
+        //INSERT INTO ExampleTable
+        //VALUES(rowName, etc.)
+        //WHERE
+
+    }
 }

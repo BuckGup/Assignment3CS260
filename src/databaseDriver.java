@@ -3,6 +3,8 @@ import java.util.Scanner;
 import java.sql.*;
 
 
+//TODO add comments to all of our work before we turn it in
+
 public class databaseDriver {
 
     private Connection conn = null;            // JDBC connection
@@ -24,9 +26,9 @@ public class databaseDriver {
         System.out.println("In which table do you want to " + action + "?");
         tableLoc = userInput.nextLine().toUpperCase();
 
-        //TODO Gather all of the row titles in the tableLoc table from SQL
-        //Prompt user with list of all the rows in tableLoc
 
+        //Prompt user with list of all the rows in tableLoc
+        //TODO: Do we need to have HRID visible to the user?
         String tableRowList = "\n--------------------";
         if (tableLoc.equals("MEDICAL CENTER")) {
             tableRowList += "\nHRID";
@@ -56,20 +58,22 @@ public class databaseDriver {
 
         //TODO: This is where we generate different SQL statements based on the userInput gathered above
         if (action.equals("INSERT")) {
-            //INSERT INTO ExampleTable
-            //VALUES(rowName, etc.)
-            //WHERE
+            Insert InsertStatement = new Insert();
+            InsertStatement.callSQLInsert();
         } else if (action.equals("UPDATE")) {
-            //UPDATE ExampleTable
-            //SET ExampleColumn = 'ExampleValue'
-            //WHERE _____
+            Update UpdateStatement = new Update();
+            UpdateStatement.callSQLUpdate();
         } else if (action.equals("DELETE")) {
-            //DELETE __row__
-            //FROM ExampleTable
-            //WHERE ______
+            Delete DeleteStatement = new Delete();
+            DeleteStatement.callSQLDelete();
         }
-
     }
+
+
+
+
+
+
 
 /** TODO: Pseudocode!
  * Gather all of the row titles in the tableLoc table
