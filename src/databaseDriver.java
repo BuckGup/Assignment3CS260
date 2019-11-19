@@ -42,19 +42,36 @@ public class databaseDriver {
         String rowName;
 
         System.out.println("What action do you want to take? (INSERT, UPDATE, or DELETE)");     //assumes the user inputs one of these values
-        action = userInput.nextLine();
+        action = userInput.nextLine().toUpperCase();
 
-        System.out.println("What table do you want to " + action + "?");
-        tableLoc = userInput.nextLine();
+        System.out.println("In which table do you want to " + action + "?");
+        tableLoc = userInput.nextLine().toUpperCase();
 
         //TODO Gather all of the row titles in the tableLoc table from SQL
         //Prompt user with list of all the rows in tableLoc
-        System.out.println("Here are the rows in " + tableLoc +
-                ": \n-----------------\n"
-                // + all rows in the table
-                + "----------------- : \n-----------------\n"
-                // + all rows in the table
-                + "-----------------");
+
+        String tableRowList = "\n--------------------";
+        if (tableLoc.equals("MEDICAL CENTER")) {
+            tableRowList += "\nHRID";
+            tableRowList += "\nNumBeds";
+            tableRowList += "\nEmergencyRoomCapacity";
+            tableRowList += "\nNumDoctors";
+            tableRowList += "\nNumNurses";
+        } else if (tableLoc.equals("FOOD")) {
+            tableRowList += "\nHRID";
+            tableRowList += "\nFType";
+            tableRowList += "\nFMealsAvailable";
+            tableRowList += "\nFSpecificDesc";
+        } else if (tableLoc.equals("WATER")) {
+            tableRowList += "\nHRID";
+            tableRowList += "\nNum10OzBottlesAvailable";
+            tableRowList += "\nNumHalfLiterBottlesAvailable";
+            tableRowList += "\nNum5GallonJugsAvailable";
+        }
+        tableRowList += "\n--------------------";
+        System.out.println("Here are the rows in " + tableLoc + ":" + tableRowList);
+
+
 
         System.out.println("What row would you like to " + action + "?");
         rowName = userInput.nextLine();
@@ -77,7 +94,7 @@ public class databaseDriver {
 
     }
 
-/** TODO: Pseucode!
+/** TODO: Pseudocode!
  * Gather all of the row titles in the tableLoc table
  * Figure out a way to deal with HRID
  *      --What does this mean? How do we use this and manipulate the data in both the HR table and the specified table
