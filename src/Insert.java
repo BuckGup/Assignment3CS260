@@ -6,6 +6,7 @@ public class Insert {
      * Also, we don't need to worry about changing types.
      */
 
+    //As a transaction
     public void callSQLInsert() {
         //INSERT INTO ExampleTable
         //VALUES(rowName, etc.)
