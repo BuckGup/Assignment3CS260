@@ -12,6 +12,8 @@ public class databaseDriver {
     // --- connect() - connect to the Oracle database
 
     public static void main(String args[]) {
+        Delete myDelete = new Delete();//declaration of the classes
+
         Scanner userInput = new Scanner(System.in);
         String action;
         String tableLoc;
