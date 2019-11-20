@@ -7,6 +7,7 @@ public class Delete {
      */
 
     public void callSQLDelete() {
+
         //DELETE __row__
         //FROM ExampleTable
         //WHERE ______

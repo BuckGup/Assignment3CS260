@@ -7,6 +7,7 @@ import java.sql.*;
 
 public class databaseDriver {
 
+
     private Connection conn = null;            // JDBC connection
     private ResultSet rset = null;            // result set for queries
     private int returnValue;                // return value for all other commands
@@ -14,6 +15,8 @@ public class databaseDriver {
     // --- connect() - connect to the Oracle database
 
     public static void main(String args[]) {
+
+        Delete myDelete = new Delete();//declaration of the classes
 
         Scanner userInput = new Scanner(System.in);
         String action;
@@ -68,6 +71,7 @@ public class databaseDriver {
             DeleteStatement.callSQLDelete();
         }
     }
+
 
 
 
@@ -192,6 +196,42 @@ public class databaseDriver {
         }
         return conn;
     }    // end - method connect
+
+    public void executeSQLQuery (String sqlQuery) {
+        // --- 3a) execute SQL query
+        Statement stmt = null;		// SQL statement object
+        rset = null;				// initialize result set
+
+        try	{
+            stmt = conn.createStatement();
+            rset = stmt.executeQuery(sqlQuery);
+        }
+        catch (SQLException sqle) {
+            System.err.println("Could not execute SQL statement: >" + sqlQuery + "<");
+            System.err.println(sqle.getMessage());
+            // rollback
+            rollback();
+        }
+    }	// end - method executeSQLQuery
+
+
+    public int executeSQLNonQuery (String sqlCommand) {
+        // --- 3b) execute SQL non-query command
+        Statement stmt = null;		// SQL statement object
+        returnValue = -1;			// initialize return value
+        try	{
+            stmt = conn.createStatement();
+            returnValue = stmt.executeUpdate(sqlCommand);
+        }
+        catch (SQLException sqle) {
+            System.err.println("Could not execute SQL command: >" + sqlCommand + "<");
+            System.err.println("Return value: " + returnValue);
+            System.err.println(sqle.getMessage());
+            // rollback
+            rollback();
+        }
+        return returnValue;
+    }	// end - method executeSQLNonQuery
 
 
 }
