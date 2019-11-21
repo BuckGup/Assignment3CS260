@@ -20,16 +20,19 @@ public class Update {
         dao.connect();      //connect to the database
         dao.setAutoCommit(false);
 
-        System.out.println("Creating the statement...");
+        System.out.println("Check the database, because hopefully this is deleting rows.");
+
+        //dao.executeSQLQuery("INSERT INTO HumResource(HRID) VALUES (999999)");
+        //dao.executeSQLQuery("INSERT INTO Food VALUES (999999, 'Distributor', 69420, 'frozen, black licorice coffee') ");
+
+        dao.executeSQLQuery("DELETE * FROM Food WHERE HRID = 999999");
+        //dao.executeSQLQuery("DELETE * FROM HumResource WHERE HRID = 999999");
 
 
-        dao.executeSQLQuery("SELECT * FROM Food");
-
-
-        resultSetStr = dao.processResultSet();
+        //resultSetStr = dao.processResultSet();
         dao.commit();
         dao.disconnect();
-        System.out.println("This is the result set: " + resultSetStr);
+        //System.out.println("This is the result set: " + resultSetStr);
 
         //("'UPDATE " + tableLoc + " SET " + rowName + " = '" + updateValue + "' WHERE HRID = " + deleteHRID + "'");
     }

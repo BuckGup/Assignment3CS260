@@ -10,8 +10,31 @@ public class Delete {
      */
 
     //As a transaction
-    public void callSQLDelete(String tableLoc, String rowName, int deleteHRID) {
+    public void callSQLDelete(/*String tableLoc, String rowName, int deleteHRID*/) {
+        String resultSetStr = null;
+        databaseObjectAccessor dao = new databaseObjectAccessor();
 
+        //DELETE value
+        //FROM table
+        //WHERE _____
+
+
+        dao.connect();      //connect to the database
+        dao.setAutoCommit(false);
+
+        System.out.println("Check the database, this is deleting rows!");
+
+
+        dao.executeSQLQuery("DELETE * FROM Food WHERE HRID = 999999");
+        dao.executeSQLQuery("DELETE * FROM HumResource WHERE HRID = 999999");
+
+
+        resultSetStr = dao.processResultSet();
+        dao.commit();
+        dao.disconnect();
+        //System.out.println("This is the result set: " + resultSetStr);
+
+        //("'UPDATE " + tableLoc + " SET " + rowName + " = '" + updateValue + "' WHERE HRID = " + deleteHRID + "'");
 
 
 

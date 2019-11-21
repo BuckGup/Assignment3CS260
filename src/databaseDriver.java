@@ -61,12 +61,13 @@ public class databaseDriver {
             //TODO: This is where we generate different SQL statements based on the userInput gathered above
             if (action.equals("INSERT")) {
                 //ask what they want to insert into
-                //InsertStatement.callSQLInsert();
+                //InsertStatement.callSQLInsert(tableLoc, rowName, HRID);
             } else if (action.equals("UPDATE")) {
                 UpdateStatement.callSQLUpdate();
 
             } else if (action.equals("DELETE")) {
-                //DeleteStatement.callSQLDelete();
+                DeleteStatement.callSQLDelete(/*tableLoc, rowName, HRID*/);
+
             }
 
             //--------------------------------------------------------------------------------------------------------------

@@ -12,14 +12,38 @@ public class Insert {
     //As a transaction
     public void callSQLInsert(String tableLoc, String TableRow, String InsertValues, int insertHRID) {
 
-
+        String resultSetStr = null;
+        databaseObjectAccessor dao = new databaseObjectAccessor();
 
 
         //INSERT INTO ExampleTable
         //VALUES(rowName, etc.)
         //WHERE
 
+        dao.connect();      //connect to the database
+        dao.setAutoCommit(false);
+
+        System.out.println("Check the database, because hopefully this is deleting rows.");
+
+        dao.executeSQLQuery("INSERT INTO HumResource(HRID) VALUES (9999)");
+        dao.executeSQLQuery("INSERT INTO Food VALUES (9999, 'Distributor', 69420, 'frozen, black licorice coffee') ");
+
+
+
+        //resultSetStr = dao.processResultSet();
+        dao.commit();
+        dao.disconnect();
+        //System.out.println("This is the result set: " + resultSetStr);
+
+
         //  ("'INSERT INTO " + tableLoc + " VALUES (" + InsertValues + ") WHERE HRID = " + insertHRID + "'")
+
+
+
+
+
+
+
 
     }
 }
