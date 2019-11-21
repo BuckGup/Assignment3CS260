@@ -13,6 +13,8 @@ public class databaseDriver {
 
     public static void main(String args[]) {
         Delete myDelete = new Delete();//declaration of the classes
+        Insert myInsert = new Insert();
+        Update myUpdate = new Update();
 
         Scanner userInput = new Scanner(System.in);
         String action;
