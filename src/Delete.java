@@ -7,7 +7,7 @@ public class Delete {
      */
 
     //As a transaction
-    public void callSQLDelete(String tableLoc, String rowName, ) {
+    public void callSQLDelete(String tableLoc, String rowName, int deleteHRID) {
 
 
 
@@ -16,7 +16,11 @@ public class Delete {
         //FROM ExampleTable
         //WHERE deleteValue
 
-        "'DELETE " + rowName + " FROM " + tableLoc + "WHERE HRID" +
+
+
+
+
+        //  something.callInSQL("'DELETE " + rowName + " FROM " + tableLoc + " WHERE HRID = " + deleteHRID + "'");
 
 
     }

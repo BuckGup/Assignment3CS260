@@ -8,10 +8,10 @@ public class Update {
 
     //As a transaction
     public void callSQLUpdate() {
-
         //UPDATE ExampleTable
         //SET ExampleColumn = 'ExampleValue'
         //WHERE _____
 
+        //  ("'UPDATE " + tableLoc + " SET " + rowName + " = '" + updateValue + "' WHERE HRID = " + deleteHRID + "'");
     }
 }
