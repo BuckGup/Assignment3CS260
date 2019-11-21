@@ -8,10 +8,21 @@ public class Update {
 
     //As a transaction
     public void callSQLUpdate() {
+        String resultSetStr = null;
+        databaseObjectAccessor dao = new databaseObjectAccessor();
+
         //UPDATE ExampleTable
         //SET ExampleColumn = 'ExampleValue'
         //WHERE _____
 
-        //  ("'UPDATE " + tableLoc + " SET " + rowName + " = '" + updateValue + "' WHERE HRID = " + deleteHRID + "'");
+        dao.connect();      //connect to the database
+        dao.setAutoCommit(false);
+        dao.executeSQLQuery("SELECT * FROM Food");
+        resultSetStr = dao.processResultSet();
+        dao.commit();
+        dao.disconnect();
+        System.out.println("This is the result set: " + resultSetStr);
+
+        //("'UPDATE " + tableLoc + " SET " + rowName + " = '" + updateValue + "' WHERE HRID = " + deleteHRID + "'");
     }
 }
