@@ -67,6 +67,7 @@ public class databaseDriver {
             //TODO: This is where we generate different SQL statements based on the userInput gathered above
             if (action.equals("INSERT")) {
                 Insert InsertStatement = new Insert();
+                //ask what they want to insert into
                 InsertStatement.callSQLInsert();
             } else if (action.equals("UPDATE")) {
                 Update UpdateStatement = new Update();

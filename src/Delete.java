@@ -7,11 +7,15 @@ public class Delete {
      */
 
     //As a transaction
-    public void callSQLDelete() {
+    public void callSQLDelete(String tableLoc, String rowName, ) {
 
         //DELETE __row__
         //FROM ExampleTable
-        //WHERE ______
+        //WHERE deleteValue
+
+        "'DELETE " + rowName + " FROM " + tableLoc + "WHERE HRID" +
+
+
     }
 
 
