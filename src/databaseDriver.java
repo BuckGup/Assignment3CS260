@@ -11,84 +11,6 @@ public class databaseDriver {
 
     // --- connect() - connect to the Oracle database
 
-    public static void main(String args[]) {
-        Delete myDelete = new Delete();//declaration of the classes
-        Insert myInsert = new Insert();
-        Update myUpdate = new Update();
-
-        Scanner userInput = new Scanner(System.in);
-        String action;
-        String tableLoc;
-        String rowName;
-
-        while (true) {
-
-            System.out.println("What action do you want to take? (INSERT, UPDATE, or DELETE)" +
-                    "\nor type \"EXIT\" to exit the program");     //assumes the user inputs one of these values
-
-            action = userInput.nextLine().toUpperCase();
-
-            if (action.equalsIgnoreCase("EXIT")) {
-                return;
-            }
-
-            System.out.println("In which table do you want to " + action + "?");
-            tableLoc = userInput.nextLine().toUpperCase();
-
-
-            //Prompt user with list of all the rows in tableLoc
-            //TODO: Do we need to have HRID visible to the user?
-            String tableRowList = "\n--------------------";
-            if (tableLoc.equals("MEDICAL CENTER")) {
-                tableRowList += "\nHRID";
-                tableRowList += "\nNumBeds";
-                tableRowList += "\nEmergencyRoomCapacity";
-                tableRowList += "\nNumDoctors";
-                tableRowList += "\nNumNurses";
-            } else if (tableLoc.equals("FOOD")) {
-                tableRowList += "\nHRID";
-                tableRowList += "\nFType";
-                tableRowList += "\nFMealsAvailable";
-                tableRowList += "\nFSpecificDesc";
-            } else if (tableLoc.equals("WATER")) {
-                tableRowList += "\nHRID";
-                tableRowList += "\nNum10OzBottlesAvailable";
-                tableRowList += "\nNumHalfLiterBottlesAvailable";
-                tableRowList += "\nNum5GallonJugsAvailable";
-            }
-            tableRowList += "\n--------------------";
-            System.out.println("Here are the rows in " + tableLoc + ":" + tableRowList);
-
-
-            System.out.println("What row would you like to " + action + "?");
-            rowName = userInput.nextLine();
-
-
-            //TODO: This is where we generate different SQL statements based on the userInput gathered above
-            if (action.equals("INSERT")) {
-                Insert InsertStatement = new Insert();
-                //ask what they want to insert into
-                InsertStatement.callSQLInsert();
-            } else if (action.equals("UPDATE")) {
-                Update UpdateStatement = new Update();
-                UpdateStatement.callSQLUpdate();
-            } else if (action.equals("DELETE")) {
-                Delete DeleteStatement = new Delete();
-                DeleteStatement.callSQLDelete();
-            }
-
-            //--------------------------------------------------------------------------------------------------------------
-
-
-        }
-
-
-
-    }
-
-
-
-
 /** TODO: Pseudocode!
  * Gather all of the row titles in the tableLoc table
  * Figure out a way to deal with HRID
@@ -118,28 +40,26 @@ public class databaseDriver {
         }
     }     // --- end - readEntry method
 
-    public void commit () {
+    public void commit() {
         try {
             conn.commit();
-        }
-        catch (SQLException sqle) {
+        } catch (SQLException sqle) {
             System.err.println("DAO, commit() - error in commit");
             System.err.println(sqle.getMessage());
         }
-    }	// end - method commit()
+    }    // end - method commit()
 
 
-    public void rollback () {
+    public void rollback() {
         try {
             conn.rollback();
-        }
-        catch (SQLException sqle) {
+        } catch (SQLException sqle) {
             System.err.println("DAO, rollback() - error in rollback");
             System.err.println(sqle.getMessage());
         }
-    }	// end - method rollback()
+    }    // end - method rollback()
 
-    public void disconnect () {
+    public void disconnect() {
         // --- 5) disconnect from database
         try {
             if (conn != null) {
@@ -148,41 +68,36 @@ public class databaseDriver {
             if (rset != null) {
                 rset = null;
             }
-        }
-        catch (SQLException sqle) {
-            System.err.println ("Error in closing database connection");
+        } catch (SQLException sqle) {
+            System.err.println("Error in closing database connection");
             System.err.println(sqle.getMessage());
-        }
-        finally {
+        } finally {
             if (conn != null) {
                 try {
                     conn.close();
-                }
-                catch (SQLException sqlerb) {
+                } catch (SQLException sqlerb) {
                     conn = null;
                 }
             }
             if (rset != null) {
                 try {
                     rset = null;
-                }
-                catch (Exception e) {
+                } catch (Exception e) {
                     rset = null;
                 }
             }
         }
-    }	// end - method disconnect
+    }    // end - method disconnect
 
 
-    public void setAutoCommit (boolean flag) {
+    public void setAutoCommit(boolean flag) {
         try {
             conn.setAutoCommit(flag);
-        }
-        catch (SQLException sqle) {
+        } catch (SQLException sqle) {
             System.err.println("DAO, setAutoCommit() - error in setting");
             System.err.println(sqle.getMessage());
         }
-    }	// end - method setAutoCommit()
+    }    // end - method setAutoCommit()
 
     public Connection connect() throws SQLException {
         // --- set the username and password

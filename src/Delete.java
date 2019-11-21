@@ -9,6 +9,8 @@ public class Delete {
     //As a transaction
     public void callSQLDelete(String tableLoc, String rowName, ) {
 
+
+
         //DELETE __row__
         //FROM ExampleTable
         //WHERE deleteValue
