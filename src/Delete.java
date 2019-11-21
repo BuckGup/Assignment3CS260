@@ -11,6 +11,7 @@ public class Delete {
 
 
 
+
         //DELETE __row__
         //FROM ExampleTable
         //WHERE deleteValue

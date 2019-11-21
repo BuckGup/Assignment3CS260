@@ -24,6 +24,7 @@ public class databaseObjectAccessor {
      * Creation date: (10/7/2002 10:55:56 AM)
      */
     public static String readEntry(String prompt) {
+
         try {
             StringBuffer buffer = new StringBuffer();
             System.out.print(prompt);

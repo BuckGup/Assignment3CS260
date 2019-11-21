@@ -8,6 +8,7 @@ public class Insert {
 
     //As a transaction
     public void callSQLInsert(String TableLoc, String TableRow, String InsertValues) {
+
         //INSERT INTO ExampleTable
         //VALUES(rowName, etc.)
         //WHERE

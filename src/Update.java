@@ -8,6 +8,7 @@ public class Update {
 
     //As a transaction
     public void callSQLUpdate() {
+
         //UPDATE ExampleTable
         //SET ExampleColumn = 'ExampleValue'
         //WHERE _____
