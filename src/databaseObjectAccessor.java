@@ -100,28 +100,97 @@ public class databaseObjectAccessor {
         }
     }    // end - method setAutoCommit()
 
-    public Connection connect() throws SQLException {
+
+    public void connect() {
         // --- set the username and password
         String user = "STRECKSH8883";
         String pass = "2C43J5R9";
 
         // --- 1) get the Class object for the driver
         try {
-            Class.forName("oracle.jdbc.OracleDriver");
-        } catch (ClassNotFoundException e) {
-            System.err.println("Could not get class object for Driver");
+            Class.forName ("oracle.jdbc.OracleDriver");
+        }
+        catch (ClassNotFoundException e) {
+            System.err.println ("Could not get class object for Driver");
         }
 
         // --- 2) connect to database
         try {
             conn = DriverManager.getConnection(
-                    "jdbc:oracle:thin:@alfred.cs.uwec.edu:1521:csdev", user, pass);
-        } catch (SQLException sqle) {
-            System.err.println("Could not make connection to database");
-            throw new SQLException();
+                    "jdbc:oracle:thin:@alfred.cs.uwec.edu:1521:csdev",user,pass);
         }
-        return conn;
-    }    // end - method connect
+        catch (SQLException sqle) {
+            System.err.println ("Could not make connection to database");
+            System.err.println(sqle.getMessage());
+        }
+    }	// end - method connect
+
+    public void executeSQLQuery (String sqlQuery) {
+        // --- 3a) execute SQL query
+        Statement stmt = null;		// SQL statement object
+        rset = null;				// initialize result set
+
+        try	{
+            stmt = conn.createStatement();
+            rset = stmt.executeQuery(sqlQuery);
+        }
+        catch (SQLException sqle) {
+            System.err.println("Could not execute SQL statement: >" + sqlQuery + "<");
+            System.err.println(sqle.getMessage());
+            // rollback
+            rollback();
+        }
+    }	// end - method executeSQLQuery
+
+    public int executeSQLNonQuery (String sqlCommand) {
+        // --- 3b) execute SQL non-query command
+        Statement stmt = null;		// SQL statement object
+        returnValue = -1;			// initialize return value
+        try	{
+            stmt = conn.createStatement();
+            returnValue = stmt.executeUpdate(sqlCommand);
+        }
+        catch (SQLException sqle) {
+            System.err.println("Could not execute SQL command: >" + sqlCommand + "<");
+            System.err.println("Return value: " + returnValue);
+            System.err.println(sqle.getMessage());
+            // rollback
+            rollback();
+        }
+        return returnValue;
+    }	// end - method executeSQLNonQuery
+
+
+    public String processResultSet () {
+        // --- 4) process result set, only applicable if executing an SQL SELECT statement
+        ResultSetMetaData rsmd = null;		// result set metadata object
+        int columnCount = -1;				// column count
+        String resultString = "";			// result string
+
+        try {
+            rsmd = rset.getMetaData();
+
+            // get number of columns from result set metadata
+            columnCount = rsmd.getColumnCount();
+
+            // row processing of result set
+            while (rset.next()) {
+                for (int index = 1; index <= columnCount; index++) {
+                    resultString += rset.getString(index) + "  ";
+                }
+                resultString += "\n";
+            }
+        }
+        catch (SQLException sqle) {
+            System.err.println("Error in processing result set");
+            System.err.println(sqle.getMessage());
+        }
+        catch (NullPointerException npe) {
+            System.err.println("DAO, processResultSet() - no result set generated");
+            System.err.println(npe.getMessage());
+        }
+        return resultString;
+    }	// end - method processResultSet
 
 
 }
