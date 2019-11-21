@@ -6,6 +6,7 @@ public class Update {
      * Something about not having to worry about changing types.
      */
 
+
     //As a transaction
     public void callSQLUpdate() {
         String resultSetStr = null;
@@ -15,9 +16,16 @@ public class Update {
         //SET ExampleColumn = 'ExampleValue'
         //WHERE _____
 
+
         dao.connect();      //connect to the database
         dao.setAutoCommit(false);
+
+        System.out.println("Creating the statement...");
+
+
         dao.executeSQLQuery("SELECT * FROM Food");
+
+
         resultSetStr = dao.processResultSet();
         dao.commit();
         dao.disconnect();

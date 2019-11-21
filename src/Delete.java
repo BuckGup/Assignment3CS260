@@ -1,3 +1,6 @@
+import java.io.*;
+import java.util.Scanner;
+import java.sql.*;
 public class Delete {
     /**
      * When deleting, we need to use the HRID to delete from both the specified table (F, W, MC) AND the Human Resources

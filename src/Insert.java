@@ -1,3 +1,6 @@
+import java.io.*;
+import java.util.Scanner;
+import java.sql.*;
 public class Insert {
     /**
      * When inserting, we need to use the HRID to insert into both the specified table (F, W, MC) AND the Human Resources
@@ -8,6 +11,9 @@ public class Insert {
 
     //As a transaction
     public void callSQLInsert(String tableLoc, String TableRow, String InsertValues, int insertHRID) {
+
+
+
 
         //INSERT INTO ExampleTable
         //VALUES(rowName, etc.)
