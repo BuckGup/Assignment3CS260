@@ -12,25 +12,17 @@ public class Insert {
     //As a transaction
     public void callSQLInsert(String tableLoc, String insertValues, int insertHRID) {
 
-
         databaseObjectAccessor dao = new databaseObjectAccessor();
         dao.connect();      //connect to the database
         dao.setAutoCommit(false);
-
-
 
         dao.executeSQLQuery("INSERT INTO HumResource (HRID) VALUES (" + insertHRID + ")");       //insert
         //dao.executeSQLQuery("INSERT INTO Food VALUES (999999, 'Distributor', 69420, 'frozen, black licorice coffee') ");
         dao.executeSQLQuery("INSERT INTO " + tableLoc + " VALUES (" + insertValues + ")");
 
-
-
         dao.commit();
         dao.disconnect();
 
-
-
         System.out.println("The program is INSERTING the given information into the database!\n\n-----------------------------------------\n");
-
     }
 }
