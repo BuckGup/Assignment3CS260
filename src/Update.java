@@ -9,26 +9,21 @@ public class Update {
      * Something about not having to worry about changing types.
      */
 
-
     //As a transaction
-    public void callSQLUpdate(/*parameters*/) {
+    public void callSQLUpdate(String tableLoc, String insertValues, int insertHRID) {
         String resultSetStr = null;
         databaseObjectAccessor dao = new databaseObjectAccessor();
-
-
-
 
         //UPDATE ExampleTable
         //SET ExampleColumn = 'ExampleValue'
         //WHERE _____
 
-
         dao.connect();      //connect to the database
         dao.setAutoCommit(false);
 
+        dao.executeSQLQuery("UPDATE " + tableLoc + " SET " + "" + "WHERE HRID  = " + insertHRID);
+
         System.out.println("Check the database, because hopefully this is deleting rows.");
-
-
 
 
         //resultSetStr = dao.processResultSet();

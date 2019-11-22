@@ -31,8 +31,6 @@ public class Delete {
         dao.commit();
         dao.disconnect();
 
-
-
     }
 
 
