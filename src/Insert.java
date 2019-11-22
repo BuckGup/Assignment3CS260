@@ -10,7 +10,7 @@ public class Insert {
      */
 
     //As a transaction
-    public void callSQLInsert(String tableLoc, String TableRow, String insertValues, int insertHRID) {
+    public void callSQLInsert(String tableLoc, String insertValues, int insertHRID) {
 
         String resultSetStr = null;
         databaseObjectAccessor dao = new databaseObjectAccessor();
