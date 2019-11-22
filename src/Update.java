@@ -8,7 +8,7 @@ public class Update {
 
 
     //As a transaction
-    public void callSQLUpdate() {
+    public void callSQLUpdate(/*parameters*/) {
         String resultSetStr = null;
         databaseObjectAccessor dao = new databaseObjectAccessor();
 
