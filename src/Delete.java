@@ -25,7 +25,7 @@ public class Delete {
         System.out.println("The program is deleting");
 
         dao.executeSQLQuery("DELETE * FROM " + tableLoc + " WHERE HRID = " + deleteHRID);
-        dao.executeSQLQuery("DELETE * FROM " + tableLoc + " WHERE HRID = " + deleteHRID);
+        dao.executeSQLQuery("DELETE * FROM HumResource WHERE HRID = " + deleteHRID);
 
         resultSetStr = dao.processResultSet();
         dao.commit();
