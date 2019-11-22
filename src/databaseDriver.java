@@ -14,6 +14,7 @@ public class databaseDriver {
         String action;
         String tableLoc;
         String rowName;
+        int HRID = 0;
 
         while (true) {
 
@@ -66,8 +67,7 @@ public class databaseDriver {
                 UpdateStatement.callSQLUpdate();
 
             } else if (action.equals("DELETE")) {
-                DeleteStatement.callSQLDelete(/*tableLoc, rowName, HRID*/);
-
+                DeleteStatement.callSQLDelete(tableLoc, HRID);
             }
 
             //--------------------------------------------------------------------------------------------------------------
