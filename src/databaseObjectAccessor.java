@@ -72,6 +72,7 @@ public class databaseObjectAccessor {
             }
             if (rset != null) {
                 rset = null;
+
             }
         } catch (SQLException sqle) {
             System.err.println("Error in closing database connection");

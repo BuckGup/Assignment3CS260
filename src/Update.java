@@ -12,6 +12,7 @@ public class Update {
     //As a transaction
     public void callSQLUpdate(String tableLoc, String insertValues, int insertHRID) {
         String resultSetStr = null;
+
         databaseObjectAccessor dao = new databaseObjectAccessor();
 
         //UPDATE ExampleTable

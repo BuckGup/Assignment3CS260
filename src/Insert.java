@@ -12,6 +12,7 @@ public class Insert {
     //As a transaction
     public void callSQLInsert(String tableLoc, String insertValues, int insertHRID) {
 
+
         databaseObjectAccessor dao = new databaseObjectAccessor();
         dao.connect();      //connect to the database
         dao.setAutoCommit(false);

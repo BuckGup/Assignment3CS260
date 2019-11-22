@@ -12,6 +12,7 @@ public class Delete {
     //As a transaction
     public void callSQLDelete(String tableLoc, int deleteHRID) {
 
+
         databaseObjectAccessor dao = new databaseObjectAccessor();
 
         //DELETE value
