@@ -27,7 +27,7 @@ public class databaseDriver {
                 return;
             }
 
-            System.out.println("In which table do you want to " + action + "?");
+            System.out.println("In which table do you want to " + action + "? (Food, Water, MedicalCenter)");
             tableLoc = userInput.nextLine().toUpperCase();
 
 
@@ -46,12 +46,13 @@ public class databaseDriver {
                     //Connect to the database
                     //SELECT max HRID from HumResource
                     //set the variable HRID = (that number + 1)
-                System.out.println("For now, insert a HRID to use in the table:");
+                System.out.println("For now, insert an HRID to use in the table:");
                 HRID = userInput.nextInt();
+                userInput.nextLine();
                 insertValues += HRID;
 
 
-                if (tableLoc.equals("MEDICAL CENTER")) {
+                if (tableLoc.equals("MEDICALCENTER")) {
                     int NumBeds;
                     int EmergencyRoomCapacity;
                     int NumDoctors;
@@ -59,12 +60,16 @@ public class databaseDriver {
 
                     System.out.println("Insert NumBeds (int):");
                     NumBeds = userInput.nextInt();
+                    userInput.nextLine();
                     System.out.println("Insert EmergencyRoomCapacity (int):");
                     EmergencyRoomCapacity = userInput.nextInt();
+                    userInput.nextLine();
                     System.out.println("Insert NumDoctors (int):");
                     NumDoctors = userInput.nextInt();
+                    userInput.nextLine();
                     System.out.println("Insert NumNurses (int):");
                     NumNurses = userInput.nextInt();
+                    userInput.nextLine();
 
                     insertValues += ", " + NumBeds + ", " + EmergencyRoomCapacity + ", " + NumDoctors + ", " + NumNurses;
 
@@ -77,10 +82,11 @@ public class databaseDriver {
                     FType = userInput.nextLine();
                     System.out.println("Insert FMealsAvailable (int):");
                     FMealsAvailable = userInput.nextInt();
+                    userInput.nextLine();
                     System.out.println("Insert FSpecificDesc (String):");
                     FSpecificDesc = userInput.nextLine();
 
-                    insertValues += ", " + FType + ", " + FMealsAvailable + ", " + FSpecificDesc;
+                    insertValues += ", '" + FType + "', " + FMealsAvailable + ", '" + FSpecificDesc + "'";
 
                 } else if (tableLoc.equals("WATER")) {
                     int Num10OzBottlesAvailable;
@@ -89,8 +95,10 @@ public class databaseDriver {
 
                     System.out.println("Insert Num10OzBottlesAvailable (int):");
                     Num10OzBottlesAvailable = userInput.nextInt();
+                    userInput.nextLine();
                     System.out.println("Insert NumHalfLiterBottlesAvailable (int):");
                     NumHalfLiterBottlesAvailable = userInput.nextInt();
+                    userInput.nextLine();
                     System.out.println("Insert Num5GallonJugsAvailable (int):");
                     Num5GallonJugsAvailable = userInput.nextInt();
 
