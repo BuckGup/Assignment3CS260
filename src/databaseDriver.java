@@ -14,7 +14,7 @@ public class databaseDriver {
         String action;
         String tableLoc;
         String rowName;
-        int HRID = 0;
+        int HRID = 9999;
 
         while (true) {
 
@@ -62,9 +62,68 @@ public class databaseDriver {
             rowName = userInput.nextLine();
 
 
-            //TODO: This is where we generate different SQL statements based on the userInput gathered above
+            //This is where we generate different SQL insert values based on userInput
             if (action.equals("INSERT")) {
-                //TODO: make HRID a user input, so they can insert an HRID (also check the Insert class to implement HRID)
+                String insertValues = "";
+
+
+                //TODO make a method that finds the highest HRID value in HumResource
+                    //Connect to the database
+                    //SELECT max HRID from HumResource
+                    //set the variable HRID = (that number + 1)
+                insertValues += HRID;
+
+
+                if (tableLoc.equals("MEDICAL CENTER")) {
+                    int NumBeds;
+                    int EmergencyRoomCapacity;
+                    int NumDoctors;
+                    int NumNurses;
+
+                    System.out.println("Insert NumBeds (int):");
+                    NumBeds = userInput.nextInt();
+                    System.out.println("Insert EmergencyRoomCapacity (int):");
+                    EmergencyRoomCapacity = userInput.nextInt();
+                    System.out.println("Insert NumDoctors (int):");
+                    NumDoctors = userInput.nextInt();
+                    System.out.println("Insert NumNurses (int):");
+                    NumNurses = userInput.nextInt();
+
+                    insertValues += ", " + NumBeds + ", " + EmergencyRoomCapacity + ", " + NumDoctors + ", " + NumNurses;
+
+                } else if (tableLoc.equals("FOOD")) {
+                    String FType;
+                    int FMealsAvailable;
+                    String FSpecificDesc;
+
+                    System.out.println("Insert FType (String):");
+                    FType = userInput.nextLine();
+                    System.out.println("Insert FMealsAvailable (int):");
+                    FMealsAvailable = userInput.nextInt();
+                    System.out.println("Insert FSpecificDesc (String):");
+                    FSpecificDesc = userInput.nextLine();
+
+                    insertValues += ", " + FType + ", " + FMealsAvailable + ", " + FSpecificDesc;
+
+                } else if (tableLoc.equals("WATER")) {
+                    int Num10OzBottlesAvailable;
+                    int NumHalfLiterBottlesAvailable;
+                    int Num5GallonJugsAvailable;
+
+                    System.out.println("Insert Num10OzBottlesAvailable (int):");
+                    Num10OzBottlesAvailable = userInput.nextInt();
+                    System.out.println("Insert NumHalfLiterBottlesAvailable (int):");
+                    NumHalfLiterBottlesAvailable = userInput.nextInt();
+                    System.out.println("Insert Num5GallonJugsAvailable (int):");
+                    Num5GallonJugsAvailable = userInput.nextInt();
+
+                    insertValues += ", " + Num10OzBottlesAvailable + ", " + NumHalfLiterBottlesAvailable + ", " + Num5GallonJugsAvailable;
+
+                }
+
+
+
+
                 InsertStatement.callSQLInsert(tableLoc, rowName, HRID);
 
 
