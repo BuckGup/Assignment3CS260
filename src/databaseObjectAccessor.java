@@ -11,6 +11,10 @@ public class databaseObjectAccessor {
 
     // --- connect() - connect to the Oracle database
 
+
+
+
+
 /** TODO: Pseudocode!
  * Gather all of the row titles in the tableLoc table
  * Figure out a way to deal with HRID

@@ -10,7 +10,8 @@ public class Delete {
      */
 
     //As a transaction
-    public void callSQLDelete(/*String tableLoc, String rowName, int deleteHRID*/) {
+    public void callSQLDelete(String tableLoc, int deleteHRID) {
+
         String resultSetStr = null;
         databaseObjectAccessor dao = new databaseObjectAccessor();
 
@@ -18,35 +19,18 @@ public class Delete {
         //FROM table
         //WHERE _____
 
-
         dao.connect();      //connect to the database
         dao.setAutoCommit(false);
 
-        System.out.println("Check the database, this is deleting rows!");
+        System.out.println("The program is deleting");
 
-
-        dao.executeSQLQuery("DELETE * FROM Food WHERE HRID = 999999");
-        dao.executeSQLQuery("DELETE * FROM HumResource WHERE HRID = 999999");
-
+        dao.executeSQLQuery("DELETE * FROM " + tableLoc + " WHERE HRID = " + deleteHRID);
+        dao.executeSQLQuery("DELETE * FROM " + tableLoc + " WHERE HRID = " + deleteHRID);
 
         resultSetStr = dao.processResultSet();
         dao.commit();
         dao.disconnect();
-        //System.out.println("This is the result set: " + resultSetStr);
 
-        //("'UPDATE " + tableLoc + " SET " + rowName + " = '" + updateValue + "' WHERE HRID = " + deleteHRID + "'");
-
-
-
-        //DELETE __row__
-        //FROM ExampleTable
-        //WHERE deleteValue
-
-
-
-
-
-        //  something.callInSQL("'DELETE " + rowName + " FROM " + tableLoc + " WHERE HRID = " + deleteHRID + "'");
 
 
     }
