@@ -31,35 +31,10 @@ public class databaseDriver {
             tableLoc = userInput.nextLine().toUpperCase();
 
 
-            //Prompt user with list of all the rows in tableLoc
-            //TODO: Do we need to have HRID visible to the user?
-            String tableRowList = "\n--------------------";
-            if (tableLoc.equals("MEDICAL CENTER")) {
-                tableRowList += "\nHRID";
-                tableRowList += "\nNumBeds";
-                tableRowList += "\nEmergencyRoomCapacity";
-                tableRowList += "\nNumDoctors";
-                tableRowList += "\nNumNurses";
-            } else if (tableLoc.equals("FOOD")) {
-                tableRowList += "\nHRID";
-                tableRowList += "\nFType";
-                tableRowList += "\nFMealsAvailable";
-                tableRowList += "\nFSpecificDesc";
-            } else if (tableLoc.equals("WATER")) {
-                tableRowList += "\nHRID";
-                tableRowList += "\nNum10OzBottlesAvailable";
-                tableRowList += "\nNumHalfLiterBottlesAvailable";
-                tableRowList += "\nNum5GallonJugsAvailable";
-            }
-            tableRowList += "\n--------------------";
-            System.out.println("Here are the columns in " + tableLoc + ":" + tableRowList);
 
 
-
-
-
-            System.out.println("What column would you like to " + action + "?");    //TODO: This prompt needs to be different depending on which action they take
-            rowName = userInput.nextLine();
+            //System.out.println("What column would you like to " + action + "?");    //TODO: This prompt needs to be different depending on which action they take
+            //rowName = userInput.nextLine();
 
 
             //This is where we generate different SQL insert values based on userInput
@@ -71,6 +46,8 @@ public class databaseDriver {
                     //Connect to the database
                     //SELECT max HRID from HumResource
                     //set the variable HRID = (that number + 1)
+                System.out.println("For now, insert a HRID to use in the table:");
+                HRID = userInput.nextInt();
                 insertValues += HRID;
 
 
@@ -118,22 +95,24 @@ public class databaseDriver {
                     Num5GallonJugsAvailable = userInput.nextInt();
 
                     insertValues += ", " + Num10OzBottlesAvailable + ", " + NumHalfLiterBottlesAvailable + ", " + Num5GallonJugsAvailable;
-
                 }
 
 
-
-
-                InsertStatement.callSQLInsert(tableLoc, rowName, HRID);
-
+                //Call a method in Insert class with the proper parameters
+                InsertStatement.callSQLInsert(tableLoc, insertValues, HRID);
 
             } else if (action.equals("UPDATE")) {
-                //TODO: deal with this after we get delete and insert working!
-                UpdateStatement.callSQLUpdate();
+                String updateValues = "";
 
+
+                //Call a method in Update class with the proper parameters
+                UpdateStatement.callSQLUpdate(tableLoc, updateValues, HRID);
 
             } else if (action.equals("DELETE")) {
-                //TODO: again, ask the user for variable names
+
+
+
+                //Call a method in Delete class with the proper parameters
                 DeleteStatement.callSQLDelete(tableLoc, HRID);
             }
 

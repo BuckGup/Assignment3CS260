@@ -13,15 +13,12 @@ public class Insert {
     public void callSQLInsert(String tableLoc, String insertValues, int insertHRID) {
 
 
-
-
-
-        String resultSetStr = null;
+        //String resultSetStr = null;
         databaseObjectAccessor dao = new databaseObjectAccessor();
         dao.connect();      //connect to the database
         dao.setAutoCommit(false);
 
-        System.out.println("The program INSERTING rows or something.");
+        System.out.println("The program is INSERTING the given information into the database!");
 
         //
         dao.executeSQLQuery("INSERT INTO HumResource (HRID) VALUES (" + insertHRID + ")");       //insert
