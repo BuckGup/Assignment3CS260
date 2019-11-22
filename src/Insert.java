@@ -15,21 +15,18 @@ public class Insert {
         String resultSetStr = null;
         databaseObjectAccessor dao = new databaseObjectAccessor();
 
-        //INSERT INTO ExampleTable
-        //VALUES(rowName, etc.)
-        //WHERE
 
         dao.connect();      //connect to the database
         dao.setAutoCommit(false);
 
         System.out.println("The program INSERTING rows or something.");
 
-
+        //
         dao.executeSQLQuery("INSERT INTO HumResource (HRID) VALUES (" + insertHRID + ")");       //insert
         //dao.executeSQLQuery("INSERT INTO Food VALUES (999999, 'Distributor', 69420, 'frozen, black licorice coffee') ");
         dao.executeSQLQuery("INSERT INTO " + tableLoc + " VALUES (" + insertValues + ")");
 
-
+        //
 
         //resultSetStr = dao.processResultSet();
         dao.commit();

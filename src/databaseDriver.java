@@ -52,26 +52,28 @@ public class databaseDriver {
                 tableRowList += "\nNum5GallonJugsAvailable";
             }
             tableRowList += "\n--------------------";
-            System.out.println("Here are the rows in " + tableLoc + ":" + tableRowList);
+            System.out.println("Here are the columns in " + tableLoc + ":" + tableRowList);
 
 
-            System.out.println("What row would you like to " + action + "?");
+            System.out.println("What column would you like to " + action + "?");    //TODO: This prompt needs to be different depending on which action they take
             rowName = userInput.nextLine();
 
 
             //TODO: This is where we generate different SQL statements based on the userInput gathered above
             if (action.equals("INSERT")) {
-                //ask what they want to insert into
+                //TODO: make HRID a user input, so they can insert an HRID (also check the Insert class to implement HRID)
                 InsertStatement.callSQLInsert(tableLoc, rowName, HRID);
+
             } else if (action.equals("UPDATE")) {
+                //TODO: deal with this after we get delete and insert working!
                 UpdateStatement.callSQLUpdate();
 
             } else if (action.equals("DELETE")) {
+                //TODO: again, ask the user for variable names
                 DeleteStatement.callSQLDelete(tableLoc, HRID);
             }
 
             //--------------------------------------------------------------------------------------------------------------
-
 
         }
 
