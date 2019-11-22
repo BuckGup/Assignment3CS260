@@ -9,6 +9,7 @@ public class databaseDriver {
         ;//declaration of the classes
         Insert InsertStatement = new Insert();
         Update UpdateStatement = new Update();
+        HRIDMax hridMax = new HRIDMax();
 
         Scanner userInput = new Scanner(System.in);
         String action;
@@ -48,6 +49,9 @@ public class databaseDriver {
                     //Connect to the database
                     //SELECT max HRID from HumResource
                     //set the variable HRID = (that number + 1)
+
+
+
                 System.out.println("For now, insert an HRID to use in the table:");
                 HRID = userInput.nextInt();
                 userInput.nextLine();
