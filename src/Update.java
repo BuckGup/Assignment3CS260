@@ -28,11 +28,7 @@ public class Update {
 
         System.out.println("Check the database, because hopefully this is deleting rows.");
 
-        //dao.executeSQLQuery("INSERT INTO HumResource(HRID) VALUES (999999)");
-        //dao.executeSQLQuery("INSERT INTO Food VALUES (999999, 'Distributor', 69420, 'frozen, black licorice coffee') ");
 
-        dao.executeSQLQuery("DELETE * FROM Food WHERE HRID = 999999");
-        //dao.executeSQLQuery("DELETE * FROM HumResource WHERE HRID = 999999");
 
 
         //resultSetStr = dao.processResultSet();

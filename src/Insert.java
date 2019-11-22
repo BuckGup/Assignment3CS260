@@ -10,11 +10,10 @@ public class Insert {
      */
 
     //As a transaction
-    public void callSQLInsert(/*String tableLoc, String TableRow, String InsertValues, int insertHRID*/) {
+    public void callSQLInsert(String tableLoc, String TableRow, String insertValues, int insertHRID) {
 
         String resultSetStr = null;
         databaseObjectAccessor dao = new databaseObjectAccessor();
-
 
         //INSERT INTO ExampleTable
         //VALUES(rowName, etc.)
@@ -23,10 +22,12 @@ public class Insert {
         dao.connect();      //connect to the database
         dao.setAutoCommit(false);
 
-        System.out.println("Check the database, because hopefully this is deleting rows.");
+        System.out.println("The program INSERTING rows or something.");
 
-        dao.executeSQLQuery("INSERT INTO HumResource(HRID) VALUES (9999)");
-        dao.executeSQLQuery("INSERT INTO Food VALUES (9999, 'Distributor', 69420, 'frozen, black licorice coffee') ");
+
+        dao.executeSQLQuery("INSERT INTO HumResource (HRID) VALUES (" + insertHRID + ")");       //insert
+        //dao.executeSQLQuery("INSERT INTO Food VALUES (999999, 'Distributor', 69420, 'frozen, black licorice coffee') ");
+        dao.executeSQLQuery("INSERT INTO " + tableLoc + " VALUES (" + insertValues + ")");
 
 
 
@@ -36,13 +37,7 @@ public class Insert {
         //System.out.println("This is the result set: " + resultSetStr);
 
 
-        //  ("'INSERT INTO " + tableLoc + " VALUES (" + InsertValues + ") WHERE HRID = " + insertHRID + "'")
-
-
-
-
-
-
+        //  ("INSERT INTO " + tableLoc + " VALUES (" + InsertValues + ") WHERE HRID = " + insertHRID)
 
 
     }
