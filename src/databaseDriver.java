@@ -113,12 +113,17 @@ public class databaseDriver {
 
             } else if (action.equals("UPDATE")) { //----------------------------------------------------------------------UPDATE-------------------------------
                 String updateValues = "";
+                System.out.println("Which row in " + tableLoc + " do you want to update?");
+
+                //give the user a table to view of the possible rows to update (??)
 
                 if (tableLoc.equals("MEDICALCENTER")) {
                     int NumBeds;
                     int EmergencyRoomCapacity;
                     int NumDoctors;
                     int NumNurses;
+
+                    System.out.println("");
 
 
                 } else if (tableLoc.equals("FOOD")) {
@@ -127,10 +132,12 @@ public class databaseDriver {
                     String FSpecificDesc;
 
 
+
                 } else if (tableLoc.equals("WATER")) {
                     int Num10OzBottlesAvailable;
                     int NumHalfLiterBottlesAvailable;
                     int Num5GallonJugsAvailable;
+
 
 
                 }
@@ -140,7 +147,7 @@ public class databaseDriver {
                 UpdateStatement.callSQLUpdate(tableLoc, updateValues, HRID);
 
             } else if (action.equals("DELETE")) {   //---------------------------------------------------------------------DELETE--------------------------------
-                //show all the HRID
+                //show all the HRID available?
                 System.out.println("What HRID do you want to delete?");
                 HRID = userInput.nextInt();
                 userInput.nextLine();
@@ -150,7 +157,6 @@ public class databaseDriver {
                 DeleteStatement.callSQLDelete(tableLoc, HRID);
             }
 
-            //--------------------------------------------------------------------------------------------------------------
 
         }
 
