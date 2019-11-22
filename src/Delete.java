@@ -12,7 +12,6 @@ public class Delete {
     //As a transaction
     public void callSQLDelete(String tableLoc, int deleteHRID) {
 
-        String resultSetStr = null;
         databaseObjectAccessor dao = new databaseObjectAccessor();
 
         //DELETE value
@@ -22,14 +21,15 @@ public class Delete {
         dao.connect();      //connect to the database
         dao.setAutoCommit(false);
 
-        System.out.println("The program is deleting");
 
-        dao.executeSQLQuery("DELETE * FROM " + tableLoc + " WHERE HRID = " + deleteHRID);
-        dao.executeSQLQuery("DELETE * FROM HumResource WHERE HRID = " + deleteHRID);
+        dao.executeSQLQuery("DELETE FROM " + tableLoc + " WHERE HRID = " + deleteHRID);
+        dao.executeSQLQuery("DELETE FROM HumResource WHERE HRID = " + deleteHRID);
 
-        resultSetStr = dao.processResultSet();
         dao.commit();
         dao.disconnect();
+
+
+        System.out.println("The program has DELETED the given row from the database!\n\n-----------------------------------------\n");
 
     }
 

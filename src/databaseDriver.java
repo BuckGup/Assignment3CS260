@@ -38,7 +38,7 @@ public class databaseDriver {
 
 
             //This is where we generate different SQL insert values based on userInput
-            if (action.equals("INSERT")) {
+            if (action.equals("INSERT")) {      //-----------------------------------------------------------------------INSERT--------------------
                 String insertValues = "";
 
 
@@ -109,15 +109,39 @@ public class databaseDriver {
                 //Call a method in Insert class with the proper parameters
                 InsertStatement.callSQLInsert(tableLoc, insertValues, HRID);
 
-            } else if (action.equals("UPDATE")) {
+            } else if (action.equals("UPDATE")) { //----------------------------------------------------------------------UPDATE-------------------------------
                 String updateValues = "";
+
+                if (tableLoc.equals("MEDICALCENTER")) {
+                    int NumBeds;
+                    int EmergencyRoomCapacity;
+                    int NumDoctors;
+                    int NumNurses;
+
+
+                } else if (tableLoc.equals("FOOD")) {
+                    String FType;
+                    int FMealsAvailable;
+                    String FSpecificDesc;
+
+
+                } else if (tableLoc.equals("WATER")) {
+                    int Num10OzBottlesAvailable;
+                    int NumHalfLiterBottlesAvailable;
+                    int Num5GallonJugsAvailable;
+
+
+                }
 
 
                 //Call a method in Update class with the proper parameters
                 UpdateStatement.callSQLUpdate(tableLoc, updateValues, HRID);
 
-            } else if (action.equals("DELETE")) {
-
+            } else if (action.equals("DELETE")) {   //---------------------------------------------------------------------DELETE--------------------------------
+                //show all the HRID
+                System.out.println("What HRID do you want to delete?");
+                HRID = userInput.nextInt();
+                userInput.nextLine();
 
 
                 //Call a method in Delete class with the proper parameters
